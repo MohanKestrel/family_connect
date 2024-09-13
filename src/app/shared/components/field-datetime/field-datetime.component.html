@@ -1,0 +1,41 @@
+<div
+  class="c-field__datetime"
+  [class.c-field__datetime--disabled]="ngControl?.control?.disabled"
+  [class.c-field__datetime--active]="isModalOpen"
+  [class.c-field__datetime--invalid]="ngControl?.control?.invalid && ngControl?.control?.touched"
+  id="datetime"
+  (click)="handleModal(true)">
+  <ion-icon class="c-field__datetime-icon" src="assets/images/icons/clock.svg"></ion-icon>
+  <p class="c-field__datetime-label" *ngIf="label; else placeholderLabel">
+    {{ label }}
+  </p>
+  <ng-template #placeholderLabel>
+    <p class="c-field__datetime-placeholder">
+      {{ placeholder }}
+    </p>
+  </ng-template>
+  <ion-icon
+    *ngIf="ngControl?.control?.invalid && ngControl?.control?.touched"
+    class="c-field__datetime-icon c-field__datetime-icon--invalid"
+    name="warning"></ion-icon>
+</div>
+
+<ion-popover
+  class="c-ion-popover c-ion-popover--auto"
+  trigger="datetime"
+  reference="trigger"
+  [isOpen]="isModalOpen"
+  (didDismiss)="handleModal(false)"
+  [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime
+      class="c-field__datetime-component"
+      id="datetime"
+      presentation="time"
+      [formControl]="ngControl.control"
+      (ionChange)="setValue($event)"></ion-datetime>
+  </ng-template>
+</ion-popover>
+
+<app-field-error-message [visible]="showValidationErrorMessage" [currentControl]="ngControl.control">
+</app-field-error-message>

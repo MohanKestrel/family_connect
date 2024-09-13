@@ -1,0 +1,10 @@
+<ion-item class="c-field__checkbox">
+  <ion-checkbox class="c-field__checkbox-input" [formControl]="ngControl.control"
+    (ionChange)="setValue($event)"></ion-checkbox>
+
+  <ion-label class="c-field__checkbox-label">{{ label }}</ion-label>
+
+  <app-field-error-message [visible]="showValidationErrorMessage"
+    [currentControl]="ngControl.control">
+  </app-field-error-message>
+</ion-item>

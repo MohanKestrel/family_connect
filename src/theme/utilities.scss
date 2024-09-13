@@ -1,0 +1,188 @@
+@import 'sizing.scss';
+@import 'variables.scss';
+
+// DISPLAY
+$displays: (
+  'none': none,
+  'block': block,
+  'flex': flex,
+  'inline': inline,
+);
+
+@each $display, $display-value in $displays {
+  .u-display--#{$display} {
+    display: $display-value;
+  }
+}
+
+.u-flex-direction--row {
+  flex-direction: row;
+}
+
+.u-flex-direction--column {
+  flex-direction: column;
+}
+
+.u-flex-align--center {
+  align-items: center;
+}
+
+.u-flex-align--start {
+  align-items: flex-start;
+}
+
+.u-flex-align--end {
+  align-items: flex-end;
+}
+
+.u-flex-justify--center {
+  justify-content: center;
+}
+
+.u-flex-justify--start {
+  justify-content: flex-start;
+}
+
+.u-flex-justify--end {
+  justify-content: flex-end;
+}
+
+// FONT
+.u-text-align--center {
+  text-align: center;
+}
+
+.u-text-align--left {
+  text-align: left;
+}
+
+.u-text-align--right {
+  text-align: right;
+}
+
+$weights: (
+  'regular': 400,
+  'medium': 500,
+  'semibold': 600,
+  'bold': 700,
+);
+
+@each $weight, $weight-value in $weights {
+  .u-font-weight--#{$weight} {
+    font-weight: $weight-value;
+  }
+}
+
+.u-font-style--italic {
+  font-style: italic;
+}
+
+.u-text-decoration--underline {
+  text-decoration: underline;
+}
+
+.u-text-decoration--none {
+  text-decoration: none;
+}
+
+$transformers: (
+  'none': none,
+  'uppercase': uppercase,
+  'lowercase': lowercase,
+  'capitalize': capitalize,
+);
+
+@each $transform, $transform-value in $transformers {
+  .u-text-transform--#{$transform} {
+    text-transform: $transform-value;
+  }
+}
+
+// WIDTH, MAX WIDTH
+$widths: (
+  '10': 10%,
+  '25': 25%,
+  '33': 33.3%,
+  '50': 50%,
+  '66': 66.6%,
+  '75': 75%,
+  '90': 90%,
+  '100': 100%,
+);
+
+@each $width, $width-value in $widths {
+  .u-width--#{$width} {
+    width: $width-value;
+  }
+
+  .u-max-width--#{$width} {
+    max-width: $width-value;
+  }
+}
+
+// CURSOR
+.u-cursor--clickable {
+  cursor: pointer;
+}
+
+// MARGIN AND PADDING
+$sizes: (
+  'xs': $size-xs,
+  'sm': $size-sm,
+  'md': $size-md,
+  'lg': $size-lg,
+  'xl': $size-xl,
+  'auto': auto,
+  'none': none,
+);
+$directions: 'left', 'right', 'top', 'bottom';
+
+@each $size, $size-value in $sizes {
+  .u-margin--#{$size} {
+    margin: $size-value !important;
+  }
+
+  @if ($size != 'auto') {
+    .u-padding--#{$size} {
+      padding: $size-value !important;
+    }
+  }
+
+  @each $direction in $directions {
+    .u-margin-#{$direction}--#{$size} {
+      margin-#{$direction}: $size-value !important;
+    }
+
+    @if ($size != 'auto') {
+      .u-padding-#{$direction}--#{$size} {
+        padding-#{$direction}: $size-value !important;
+      }
+    }
+  }
+}
+
+// COLORS AND BACKGROUND
+$colors: (
+  'primary-500': var(--color-primary-500),
+  'primary-300': var(--color-primary-300),
+  'primary-700': var(--color-primary-700),
+  'white': white,
+  'black': var(--color-gray-900),
+  'success': var(--color-success),
+  'warning': var(--color-warning),
+  'error': var(--color-error),
+  'blue-100': var(--color-blue-100),
+  'blue-500': var(--color-blue-500),
+  'blue-700': var(--color-blue-700),
+  'gray-400': var(--color-gray-400),
+);
+
+@each $color, $color-value in $colors {
+  .u-color--#{$color} {
+    color: $color-value !important;
+  }
+
+  .u-background--#{$color} {
+    background-color: $color-value !important;
+  }
+}

@@ -1,0 +1,162 @@
+@import '../sizing.scss';
+@import '../variables.scss';
+
+@keyframes overflowTrigger {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: auto;
+    overflow-x: hidden;
+  }
+}
+
+ion-modal::part(backdrop) {
+  z-index: 100;
+  --backdrop-opacity: 0.32;
+}
+
+ion-modal::part(content) {
+  --width: calc(100% - #{$size-xl});
+  --height: calc(100% - #{$size-xl});
+  --max-height: 84vh;
+  --border-radius: $size-md;
+  overflow-y: auto;
+  z-index: 101;
+}
+
+.c-ion-modal {
+  overflow: auto;
+  position: fixed;
+
+  .ion-page {
+    position: relative;
+    contain: content !important;
+  }
+
+  &::part(content) {
+    --border-radius: #{$size-md};
+    --height: auto;
+    --width: 640px;
+    --max-height: calc(100% - #{$size-xl});
+    --max-width: 640px !important;
+  }
+
+  &--full::part(content) {
+    --width: 100vw;
+    --height: 100vh;
+    --max-height: 100vh;
+    --border-radius: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    z-index: 101;
+  }
+
+  &--auto {
+    &::part(content) {
+      --border-radius: #{$size-md};
+      --height: auto !important;
+      --width: auto !important;
+    }
+  }
+
+  scrollbar-color: var(--color-gray-300) var(--color-gray-900);
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: $size-base;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-gray-900);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-gray-300);
+  }
+}
+
+.c-modal {
+  background: var(--color-gray-1000);
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  padding: $size-lg;
+  position: relative;
+
+  &__close {
+    position: absolute;
+    top: $size-md;
+    right: $size-md;
+    width: $size-lg;
+    height: $size-lg;
+    background: var(--color-red);
+    border-radius: 50%;
+    border: 0;
+    color: var(--color-gray-600);
+    font-size: $size-md;
+    text-align: center;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:hover {
+      color: var(--color-gray-900);
+      background: var(--color-red-600);
+    }
+
+    ion-icon {
+      display: inline-flex;
+    }
+  }
+
+  &__title {
+    margin-bottom: $size-sm;
+  }
+
+  &__description {
+    color: var(--color-text-medium);
+    margin-bottom: $size-base;
+    white-space: pre-wrap;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $size-base;
+    margin-top: auto;
+    padding-top: $size-md;
+  }
+}
+
+/*
+@media (max-width: 600px) {
+  .c-ion-modal {
+    .modal-wrapper {
+      .ion-page {
+        padding-top: $size-xl * 2;
+        padding-bottom: 0;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  .c-modal {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    min-height: 60vh;
+    margin-bottom: 0;
+
+    &__footer {
+      border-top: 0;
+    }
+  }
+}
+*/

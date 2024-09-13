@@ -1,0 +1,45 @@
+@import 'sizing.scss';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  margin-bottom: $size-sm;
+  font-weight: 500;
+  line-height: 1.4em;
+  white-space: pre-line;
+}
+
+h1 {
+  font-size: $size-base * 2.25;
+}
+
+h2 {
+  font-size: $size-base * 1.875;
+}
+
+h3 {
+  font-size: $size-base * 1.5;
+}
+
+h4 {
+  font-size: $size-base * 1.25;
+}
+
+h5 {
+  font-size: $size-base * 1.125;
+}
+
+h6 {
+  font-size: $size-base * 0.9;
+}
+
+p {
+  font-size: $size-base * 1;
+  font-weight: 400;
+  margin-bottom: $size-md;
+}

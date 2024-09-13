@@ -1,0 +1,11 @@
+<div class="c-field" ion-content>
+
+  <h6 class="c-field__label">{{ label }}</h6>
+
+  <ng-otp-input class="c-field__otp" #ngOtpInput (onInputChange)="setValue($event)"
+    [config]="{ length: length, placeholder: placeholder }"></ng-otp-input>
+
+  <app-field-error-message [visible]="showValidationErrorMessage"
+    [currentControl]="ngControl.control">
+  </app-field-error-message>
+</div>

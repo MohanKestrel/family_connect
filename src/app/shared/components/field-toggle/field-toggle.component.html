@@ -1,0 +1,13 @@
+<ion-item class="c-field__toggle">
+  <ion-label class="c-field__toggle-label">{{ label }}</ion-label>
+
+  <ion-toggle
+    #ionToggle
+    mode="ios"
+    class="c-field__toggle-input"
+    [disabled]="disabled"
+    [formControl]="ngControl.control"
+    (ionChange)="setValue($event)"></ion-toggle>
+  <app-field-error-message [visible]="showValidationErrorMessage" [currentControl]="ngControl.control">
+  </app-field-error-message>
+</ion-item>
